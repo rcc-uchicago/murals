@@ -8,7 +8,7 @@ As mentioned, the location data is only descriptive.  No geocoding was provided,
 
 ![map](map.png)
 
-You can see the resulting geojson/map [here](https://gist.github.com/anonymous/bf00295ee7e52e4cde9b).
+You can see the resulting geojson/map [here](data.geojson).
 
 
 ## Process
