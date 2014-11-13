@@ -13,9 +13,9 @@ You can see the resulting geojson/map [here](https://gist.github.com/anonymous/b
 
 ## Process
 
-The provided sample was CSV formatted with embedded commas, so we converted it to TSV-format ([`data.tsv`](data.tsv) to enable easy column cutting from the command line (`cut -f 8`).
+The provided sample was CSV formatted with embedded commas, so we converted it to TSV-format ([`data.tsv`](data.tsv) to enable easy column cutting from the command line (`cut -f 8 data.tsv`).
 
-The first order of business was to extract out the uniqe locations (`cut -f 8 data.tsv | sort | uniq > places.txt`) and determine their geocoordinates.  We wrote a little script, [`geocode.js`](geocode.js), to do this, which utilizes Google's geocoding API.
+The first order of business was to extract out the unique locations (`cut -f 8 data.tsv | sort | uniq > places.txt`) and determine their geocoordinates.  We wrote a little script, [`geocode.js`](geocode.js), to do this, which utilizes Google's geocoding API.
 We used this script to output [`locations.ndj`](locations.ndj), a newline-delimited JSON file containing the provided addresses along with their geocoordinates.
 
 The last step was to convert the derived geocoded data to valid [geojson](http://geojson.org/).  Our little [`makegeojson.coffee`](makegeojson.coffe) script was used to convert the `locations.ndj` data into [`data.geojson`](data.geojson).
