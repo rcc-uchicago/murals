@@ -45,7 +45,6 @@ function main(comm_areas, data) {
         area.layer = L.geoJson(polygon) // Polygon
             .addTo(map)
             .on('click', function() {
-                console.log(area.murals)
                 $('#community-area').text(area.name);
                 $('#num-murals').text(area.murals.toString());
              });

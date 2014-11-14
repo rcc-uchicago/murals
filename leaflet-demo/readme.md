@@ -7,7 +7,7 @@ a community area, you can see how many murals are in that area in a text box bel
 #### Data
 - [data.geojson](data.geojson) came from the `data-sample` directory. It was manually annotated with community area data - this
 step should ultimately be automated.
-- [community-areas.json](community-areas.json) is from the city's [data portal](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas-current-/cauq-8yn6).
+- [community-areas.json](community-areas.json) is from the city's [data portal](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas-current-/cauq-8yn6), and the tool [togeojson](https://github.com/mapbox/togeojson)
 
 #### Screenshots
 
