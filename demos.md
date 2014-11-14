@@ -18,3 +18,5 @@ If you want more flexible filtering based on a user specified combination of dat
 Crosslet is a little geoviz tool built off of leaflet, crossfilter, and D3.
 
 [Palladio’s](http://palladio.designhumanities.org/sample/#/visualization) mapping/filtering tools are fantastic, but they still haven’t open sourced it ye
+
+[d3.carto](https://github.com/emeeks/d3-carto-map/) is a plugin for D3 that makes it easy to create maps with data layers.
