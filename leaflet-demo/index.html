@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Quick Start Guide Example</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="map" style="width: 1000px; height: 800px"></div>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script>
+
+    var map = L.map('map').setView([41.88, -87.63], 11);
+
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'examples.map-i875mjb7'
+    }).addTo(map);
+
+    var popup = function(d, i) { return "<img src='images/carrey-"+i+".png'><br>" + d.properties.Address }
+        
+    $.getJSON('data.geojson', function(data) {
+        data.features.forEach(function(d, i) {
+            L.geoJson(d)
+                .addTo(map)
+                .bindPopup(popup(d,i))
+        })
+    });
+
+  	</script>
+</body>
+</html>
