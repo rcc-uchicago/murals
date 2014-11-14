@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Leaflet Quick Start Guide Example</title>
+	<title>Murals in Chicago</title>
 	<meta charset="utf-8" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,29 +11,70 @@
 </head>
 <body>
 	<div id="map" style="width: 1000px; height: 800px"></div>
+    <div id="content">
+        Community area: <span id="community-area"></span> <br>
+        Number of murals: <span id="num-murals"></span>  <br>
+
+    </div>
+
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script>
 
-    var map = L.map('map').setView([41.88, -87.63], 11);
+ var map = L.map('map').setView([41.88, -87.63], 11);
 
-    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        id: 'examples.map-i875mjb7'
-    }).addTo(map);
+L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    id: 'examples.map-i875mjb7'
+}).addTo(map);
 
-    var popup = function(d, i) { return "<img src='images/carrey-"+i+".png'><br>" + d.properties.Address }
-        
+$.getJSON('community-areas.json', function(comm_areas) {
     $.getJSON('data.geojson', function(data) {
-        data.features.forEach(function(d, i) {
-            L.geoJson(d)
-                .addTo(map)
-                .bindPopup(popup(d,i))
-        })
+        main(comm_areas, data)
+     });
+ });
+         
+function main(comm_areas, data) {
+    var communityAreas = []
+
+    comm_areas.features.forEach(function(d) {
+        var area = { "name": d.properties.human_name, "murals": 0 }
+        var polygon = d.geometry.geometries[0]
+        area.layer = L.geoJson(polygon) // Polygon
+            .addTo(map)
+            .on('click', function() {
+                console.log(area.murals)
+                $('#community-area').text(area.name);
+                $('#num-murals').text(area.murals.toString());
+             });
+        communityAreas.push(area)
     });
 
-  	</script>
+    var areasByName = {}
+    communityAreas.forEach(function(d) {
+        areasByName[d.name] = d
+    });
+
+    var popup = function(d, i) { return "<img src='images/carrey-"+i+".png'><br>" + d.properties.Address }
+    var i = 0
+    L.geoJson(data, {
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup(popup(feature,i))
+            i +=1
+            areasByName[feature.properties.community_area].murals += 1
+        }
+    }).addTo(map);
+}
+
+
+
+
+
+
+
+</script>
+
 </body>
 </html>
