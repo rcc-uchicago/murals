@@ -52,7 +52,11 @@
           areasByName[d.name] = d
       });
 
-      var popup = function(d, i) { return "<img src='images/carrey-"+i+".png'><br>" + d.properties.Address }
+      var popup = function(d, i) { 
+        var thumb = 'images/thumbs/' + d.properties.image + '.jpg'
+        return "<img src='" + thumb + "'><br>" + d.properties.address 
+      };
+
       var i = 0
       L.geoJson(data, {
           onEachFeature: function(feature, layer) {
