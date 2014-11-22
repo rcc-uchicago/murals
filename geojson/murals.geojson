@@ -1,0 +1,103 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "43rd Street and Langley Avenue, Chicago, IL",
+        "community_area": "Grand Boulevard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6091709,
+          41.816756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "3553 W. North Avenue, Chicago, IL",
+        "community_area": "Humboldt Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.71652999999999,
+          41.90970000000001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "5219 West Madison Street, Chicago, IL",
+        "community_area": "Austin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7559799,
+          41.880025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "4859 S. Wabash, Chicago, IL",
+        "community_area": "Grand Boulevard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6242408,
+          41.8057123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "Irving Park and Sheridan, Chicago, IL",
+        "community_area": "Lake View"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6545443,
+          41.95449680000001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "Lawndale and 16th Street, Chicago, IL",
+        "community_area":"North Lawndale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7176316,
+          41.8589441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Address": "South Side Community Art Center 335, Chicago, IL",
+        "community_area": "Loop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6297982,
+          41.8781136
+        ]
+      }
+    }
+  ]
+}
