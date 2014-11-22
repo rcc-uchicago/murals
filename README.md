@@ -4,6 +4,6 @@ Prof Zorach is working on a project to catalog murals around the city of chicago
 
 ![map](map.png)
 
-We extracted out the unique locations, geocoded them, and [converted to geojson](data-sample/data.geojson).  See resulting [map](http://rcc-uchicago.github.io/murals/) or the [data sample](data-sample) directory for details.
+We used the provided [sample data file](data-sample/data.tsv) to extract out the unique locations, geocode them, and [convert to geojson](data-sample/data.geojson).  See resulting [map](http://rcc-uchicago.github.io/murals/) or the [data sample](data-sample) directory for details.
 
 See also the [demos](demos.md) page for various examples of mapping visualizations that enable you to filter place markers on a map based on one or more attributes associated with the markers.
