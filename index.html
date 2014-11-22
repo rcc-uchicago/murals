@@ -26,16 +26,16 @@
       id: 'examples.map-i875mjb7'
   }).addTo(map);
 
-  $.getJSON('geojson/regions.geojson', function(comm_areas) {
+  $.getJSON('geojson/areas.geojson', function(areas) {
       $.getJSON('geojson/murals.geojson', function(data) {
-          main(comm_areas, data)
+          main(areas, data)
       });
   });
           
-  function main(comm_areas, data) {
+  function main(areas, data) {
       var communityAreas = []
 
-      comm_areas.features.forEach(function(d) {
+      areas.features.forEach(function(d) {
           var area = { "name": d.properties.human_name, "murals": 0 }
           var polygon = d.geometry.geometries[0]
           area.layer = L.geoJson(polygon) // Polygon
@@ -62,7 +62,7 @@
           onEachFeature: function(feature, layer) {
               layer.bindPopup(popup(feature,i))
               i +=1
-              areasByName[feature.properties.community_area].murals += 1
+              areasByName[feature.properties.area].murals += 1
           }
       }).addTo(map);
   }

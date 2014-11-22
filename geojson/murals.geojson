@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "address": "43rd Street and Langley Avenue, Chicago, IL",
-        "community_area": "Grand Boulevard",
+        "area": "Grand Boulevard",
         "image": 7136143
       },
       "geometry": {
@@ -20,7 +20,7 @@
       "type": "Feature",
       "properties": {
         "address": "3553 W. North Avenue, Chicago, IL",
-        "community_area": "Humboldt Park",
+        "area": "Humboldt Park",
         "image": 7149063
       },
       "geometry": {
@@ -35,7 +35,7 @@
       "type": "Feature",
       "properties": {
         "address": "5219 West Madison Street, Chicago, IL",
-        "community_area": "Austin",
+        "area": "Austin",
         "image": 7165683
       },
       "geometry": {
@@ -50,7 +50,7 @@
       "type": "Feature",
       "properties": {
         "address": "4859 S. Wabash, Chicago, IL",
-        "community_area": "Grand Boulevard",
+        "area": "Grand Boulevard",
         "image": 7149044
       },
       "geometry": {
@@ -65,7 +65,7 @@
       "type": "Feature",
       "properties": {
         "address": "Irving Park and Sheridan, Chicago, IL",
-        "community_area": "Lake View",
+        "area": "Lake View",
         "image": 7140136
       },
       "geometry": {
@@ -80,8 +80,8 @@
       "type": "Feature",
       "properties": {
         "address": "Lawndale and 16th Street, Chicago, IL",
-        "community_area": "North Lawndale",
-        "image": 7168734
+        "area": "North Lawndale",
+        "image": 7148991
       },
       "geometry": {
         "type": "Point",
@@ -95,7 +95,7 @@
       "type": "Feature",
       "properties": {
         "address": "South Side Community Art Center 335, Chicago, IL",
-        "community_area": "Loop",
+        "area": "Loop",
         "image": 811335
       },
       "geometry": {
