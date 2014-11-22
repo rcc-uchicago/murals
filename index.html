@@ -26,8 +26,8 @@
       id: 'examples.map-i875mjb7'
   }).addTo(map);
 
-  $.getJSON('communities.geojson', function(comm_areas) {
-      $.getJSON('data.geojson', function(data) {
+  $.getJSON('geojson/regions.geojson', function(comm_areas) {
+      $.getJSON('geojson/murals.geojson', function(data) {
           main(comm_areas, data)
       });
   });
