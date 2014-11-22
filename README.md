@@ -1,18 +1,11 @@
-# Geoviz Demo
+# Chicago Murals Demo
 
-This is an early-stage demo showing how to visualize geo data and images with [leaflet.js](http://leafletjs.com/).
+This branch contains the source files for an early-stage demo of the Chicago Murals project. Map markers indicate a mural location and show a sample mural image when clicked.
 
-The markers indicate a mural location and show a mock image when clicked.  Simon also added a layer highlighting Chicago communities, demonstrating leaflet's layering capabilities.  If you click on a community area, you can see how many murals are in that area in a text box below the map.
+See [live demo](http://rcc-uchicago.github.io/murals/).
 
 
 ## Data
 
-* [`murals.geojson`](murals.geojson) contains mural locations.
-* [`regions.geojson`](community-areas.json) is based on source data coming from the city of Chicago's [data portal](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas-current-/cauq-8yn6) and converted into `geojson`  with [`togeojson`](https://github.com/mapbox/togeojson).
-
-
-## Screenshots
-
-![markers](images/markers.png)
-![popup](images/popup.png)
-
+* [`murals.geojson`](geojson/murals.geojson) contains mural locations..
+* [`areas.geojson`](geojson/areas.geojson) is based on source data coming from the city of Chicago's [data portal](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas-current-/cauq-8yn6) and [converted](https://github.com/mapbox/togeojson) into `geojson`
