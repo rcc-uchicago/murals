@@ -31,6 +31,18 @@ If so ...
   for filtering?
 * do you want to filter by specifying *combinations* of feature constraints?
 
+---
+
+As for the basic user interface, would the following suffice:
+
+* upper half of page reflects image filtering widgets
+  * a map of the chicago region with image markers would be the dominant widget
+  * the map would be updated when filtering criteria are applied
+* lower half of page reflects image result set (based on current filter criteria)
+  * this would be a table, one image record per row
+  * each row would contain a thumbnail image and associated image features
+  * the default result set would be all available images
+
 
 ## entities
 
