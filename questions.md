@@ -2,14 +2,15 @@
 
 Is the following summary of the situation correct?
 
-You're seeking as an interactive data visualization where the basic entities for which you have data are:
-  * sites
-  * artists
-  * images
+You have a large collection of mural images and you'd like a web-based tool for
+exploring this collection.
 
-The visualization should map mural sites and enable the viewer to filter the
-collection of mural images by a particular set of image features (site, region,
-artist, date, etc.)
+The basic entities for which you have data are:
+* sites
+* artists
+* **images**
+
+The tool envisioned is a single-page web app that would enable the user to filter the collection by a particular set of image features (site, region, artist, date, etc.)
 
 If so ...
 
