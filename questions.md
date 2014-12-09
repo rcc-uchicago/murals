@@ -1,13 +1,10 @@
 # Questions
 
+
+## General
+
 * Who is the primary audience for this data visualization?
 * Can you provide a few use cases?
-
-For the current collection ...
-
-* How many mural locations?
-* How many images?
-* How many images per location?
 
 
 ## Main purpose of the desired tool
@@ -38,8 +35,22 @@ As for the basic user interface, would the following suffice?
 
 * upper half of page reflects image filtering widgets
   * a map of the chicago region with image markers would be the dominant widget
-  * the map would be updated when filtering criteria are applied
+  * other widgets could include ...
+    * a brushable date range selector for filtering by image creation date
+    * a list of all artists
+    * any other image feature that's numeric or enumerable (i.e., categorical)
+  * the map would immediately be updated when filtering criteria are applied
+
 * lower half of page reflects image result set (based on current filter criteria)
   * this would be a table, one image record per row
   * each row would contain a thumbnail image and associated image features
+  * each thumbnail would link to a page containing associated image and details
   * the default result set would be all available images
+
+
+## Misc
+
+For the current collection ...
+
+* How many mural locations?
+* How many images per location?
