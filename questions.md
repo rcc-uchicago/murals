@@ -36,7 +36,8 @@ As for the basic user interface, would the following suffice?
 * upper half of page reflects image filtering widgets
   * a map of the chicago region with image markers would be the dominant widget
   * other widgets could include ...
-    * a brushable date range selector for filtering by image creation date
+    * a [brushable](http://bl.ocks.org/mbostock/6232620) date range selector 
+      for filtering by image creation date
     * a list of all artists
     * any other image feature that's numeric or enumerable (i.e., categorical)
   * the map would immediately be updated when filtering criteria are applied
