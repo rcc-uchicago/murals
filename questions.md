@@ -33,13 +33,16 @@ If so ...
 
 As for the basic user interface, would the following suffice?
 
-* upper half of page reflects image filtering widgets
-  * a map of the chicago region with image markers would be the dominant widget
+* upper half of page reflects image filtering widgets (interactive ui elements
+  for specifying filtering criteria)
+  * a map of the chicago region with site markers would be the dominant widget
+    * clicking a site would filter the image result set by site
   * other widgets could include ...
     * a [brushable](http://bl.ocks.org/mbostock/6232620) date range selector 
       for filtering by image creation date
     * a list of all artists
-    * any other image feature that's numeric or enumerable (i.e., categorical)
+    * a widget based on any other image feature that's numeric or 
+      enumerable (i.e., categorical)
   * the map would immediately be updated when filtering criteria are applied
 
 * lower half of page reflects image result set (based on current filter criteria)
@@ -47,11 +50,3 @@ As for the basic user interface, would the following suffice?
   * each row would contain a thumbnail image and associated image features
   * each thumbnail would link to a page containing associated image and details
   * the default result set would be all available images
-
-
-## Misc
-
-For the current collection ...
-
-* How many mural locations?
-* How many images per location?
