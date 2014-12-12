@@ -23,6 +23,7 @@
       id: 'examples.map-i875mjb7'
   }).addTo(map);
 
+
   $.getJSON('geojson/murals.geojson', function(data) {
 
       var popup = function(d) { 
@@ -35,7 +36,8 @@
       };
 
       var bind = function (feature, layer) {
-        layer.bindPopup(popup(feature))
+        // markers[feature.properties.area] = layer;
+        layer.bindPopup(popup(feature));
       };
 
       L.geoJson(data, { onEachFeature: bind }).addTo(map);
