@@ -11,7 +11,7 @@
 
 Is the following summary of the situation correct?
 
-You have a large collection of mural images and you'd like **a web-based that
+You have a large collection of mural images and you'd like **a web-based tool that
 would enable other researchers to explore this collection.**
 
 The basic entities for which you have data are:
