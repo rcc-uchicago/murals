@@ -3,12 +3,18 @@
 
 ## Chicago Mural Info
 
-* [mural locator](http://murallocator.org/) - global database and map of public
+* [chicago murals](http://murallocator.org/tag/chicago) - chicago murals found in Mural Locator's global database of public murals
   murals, [including Chicago](http://murallocator.org/tag/chicago)
 * [curbed's guide to 51 chicago murals](http://chicago.curbed.com/archives/2014/07/17/a-guide-to-44-neighborhood-murals-you-must-see-right-now.php) - online guide to 51 chicago murals with pop-up map
 * [gray's guide to chicago murals](http://press.uchicago.edu/ucp/books/book/chicago/G/bo3641455.html) - said to be the definitive handbook
 * [mural restoration work in Chicago](http://www.theconservationcenter.com/conservation-services/murals) - the conservation center has restored many historic murals for the Chicago Park District
 
+
+## Interative Mural Maps
+
+* [mural locator](http://murallocator.org/) - global database and map of public
+  murals
+* [philadelphia mural sites](http://muralarts.org/collections/featured-murals/map) - City of Philadelphia Mural Arts Program map of featured murals
 
 
 ## Geodata tools for mapping and filtering
