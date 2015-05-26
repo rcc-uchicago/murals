@@ -6,7 +6,7 @@ Bridget Madden provided a sample data file containing records of mural images an
 
 As mentioned, the location data is only descriptive.  No geocoding was provided, so we wanted to determine how difficult it would be to geocode the location descriptions and render the resulting geocoordinates on a map along with the provided address info.
 
-![map](map.png)
+![map](../map.png)
 
 You can see the resulting geojson/map [here](data.geojson).
 
