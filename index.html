@@ -5,42 +5,152 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <link href="nouislider.min.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="nouislider.min.js"></script>
+  <style>
+  #overlay {
+       visibility: hidden;
+       position: absolute;
+       left: 0px;
+       top: 0px;
+       width:100%;
+       height:100%;
+       text-align:center;
+       z-index: 1000;
+  }
+  #overlay img {
+    width: auto;
+    height: 95%;
+  }
+  
+  #range {
+  	width: 800px;
+  	margin: 0 auto 30px;
+  }
+  
+  </style>
 </head>
 <body>
 	<div id="map" style="width: 1000px; height: 800px"></div>
+  <div id="overlay"><img id="overlayimg"></img></div>
+  <div id="range"></div>
 
 <script>
-  var map = L.map('map').setView([41.88, -87.63], 12);
+function overlay(img) {
+  if (img) {
+    var i = document.getElementById("overlayimg")
+    i.setAttribute("src", "images/full_img/"+img)
+  }
+	var el = document.getElementById("overlay");
+  el.onclick = overlay
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
 
-  L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: 'Map data &copy; ' + 
-          '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-          '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      id: 'examples.map-i875mjb7'
-  }).addTo(map);
+
+var map = L.map('map').setView([41.88, -87.63], 12);
+
+/*
+L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; ' + 
+        '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    id: 'examples.map-i875mjb7'
+}).addTo(map);
+*/
+var osm_tiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map)
 
 
-  $.getJSON('geojson/murals.geojson', function(data) {
+$.getJSON('muraldata.geojson', function(data) {
 
-      var popup = function(d) { 
-        var imageID = d.properties.image,
-            address = d.properties.address,
-            area = d.properties.area;
-        var imageFile = 'images/thumbs/' + imageID + '.jpg';
-        var image = "<img src='" + imageFile + "'>";
-        return [image, address, area].join('<br>')
-      };
+  var popup = function(d) { 
+    var imageID = d.properties.image,
+      address = d.properties.address;
+        area = d.properties.area;
+    if (imageID) { 
+      var imageFile = 'images/new_thumbs/' + imageID;
+      var image = "<a href='#' onclick='overlay(\""+ imageID +"\")'><img src='" + imageFile + "'></img></a>";
+      return [image, address].join('<br>')
+    }
+    return address;
+  };
 
-      var bind = function (feature, layer) {
-        // markers[feature.properties.area] = layer;
-        layer.bindPopup(popup(feature));
-      };
+  var bind = function (feature, layer) {
+    // markers[feature.properties.area] = layer;
+    layer.bindPopup(popup(feature));
+  };
 
-      L.geoJson(data, { onEachFeature: bind }).addTo(map);
+  var dataLayer = L.geoJson(data, { onEachFeature: bind }).addTo(map);
 
+  var range = extent(data.features);
+  var slider = document.getElementById('range');
+
+  noUiSlider.create(slider, {
+  	start: range, // Handle start position
+  	step: 1, // Slider moves in increments of '10'
+  	connect: true, // Display a colored bar between the handles
+  	direction: 'ltr', // Put '0' at the bottom of the slider
+  	orientation: 'horizontal', 
+  	behaviour: 'tap-drag', // Move handle on tap, bar is draggable
+  	range: { // Slider can select '0' to '100'
+  		'min': range[0],
+  		'max': range[1]
+  	},
+  	pips: { // Show a scale with the slider
+  		mode: 'steps',
+  		density: 2
+  	}
   });
+  
+  slider.noUiSlider.on('update', function( values, handle ) {
+  
+  	var newrange = values.map(parseFloat)
+
+    if (range[0]==newrange[0] && range[1]==newrange[1])
+      return;
+    range = newrange;
+    
+    var filterfunc = (function(d) {
+      if (d.properties.creation > 0) {
+        return (d.properties.creation > range[0] && d.properties.creation < range[1])
+      }
+      return false;
+    })
+    
+    var newlayer = L.geoJson(data, {
+      onEachFeature: bind,
+      filter: filterfunc
+    }).addTo(map);
+    
+    map.removeLayer(dataLayer);
+    
+    dataLayer = newlayer;
+    
+  });
+  
+  
+
+});
+
+
+function extent(arr) {
+  var max = 0;
+  var min = Infinity;
+  for (z of arr) {
+    var s = parseInt(z.properties["creation"])
+    var t = parseInt(z.properties["destruction"])
+    if (t > max)
+      max = t
+    if (s >0 && s < min)
+      min = s
+  }
+  return [min, max]
+}
+
 </script>
